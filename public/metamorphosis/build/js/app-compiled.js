@@ -30,19 +30,13 @@
 
 })();
 (function () {
-	var ctrlM = angular.module('ali.ctrl');
-
-	// ctrlM
-
-})();
-(function () {
 	var cosM = angular.module('ali.constant');
 
 })();
 (function () {
-	var dM = angular.module('ali.dir');
+	var ctrlM = angular.module('ali.ctrl');
 
-	// dM
+	// ctrlM
 
 })();
 (function () {
@@ -83,6 +77,12 @@
 			link: function($scope, iElm, iAttrs, controller) {}
 		};
 	}]);
+
+})();
+(function () {
+	var dM = angular.module('ali.dir');
+
+	// dM
 
 })();
 // service js Document
