@@ -1,25 +1,25 @@
 (function () {
 
-	var angu = ['ui.bootstrap', 'ngSanitize', 'ngAria', 'ngAnimate', 'mgcrea.ngStrap', 'angularMoment'];
-	var routerCtrl = ['appname.router', 'appname.ctrl'];
-	var cons = ['appname.constant'];
-	var serv = ['appname.sig.service', 'appname.service'];
-	var dir = ['appname.dir', 'appname.cust.dir'];
+	var angu = ['ui.bootstrap', 'ngSanitize', 'ngAria', 'ngAnimate', 'mgcrea.ngStrap', 'bootstrapLightbox', 'angularMoment'];
+	var routerCtrl = ['ali.router', 'ali.ctrl'];
+	var cons = ['ali.constant'];
+	var serv = ['ali.sig.service', 'ali.service'];
+	var dir = ['ali.dir', 'ali.cust.dir'];
 
 	var depedencyArr = angu.concat(routerCtrl, cons, serv, dir);
 	/**
-	* appname Module
+	* ali Module
 	*
 	* The main module of this application...
 	*/
-	angular.module('appname', depedencyArr);
+	angular.module('ali', depedencyArr);
 
-	angular.module('appname.router', ['ui.router']);
-	angular.module('appname.constant', []);
-	angular.module('appname.sig.service', []);
-	angular.module('appname.service', []);
-	angular.module('appname.ctrl', []);
-	angular.module('appname.dir', ['appname.service', 'appname.sig.service']);
-	angular.module('appname.cust.dir', ['appname.service', 'appname.sig.service']);
+	angular.module('ali.router', ['ui.router']);
+	angular.module('ali.constant', []);
+	angular.module('ali.sig.service', []);
+	angular.module('ali.service', []);
+	angular.module('ali.ctrl', []);
+	angular.module('ali.dir', ['ali.service', 'ali.sig.service']);
+	angular.module('ali.cust.dir', ['ali.service', 'ali.sig.service']);
 
 })();

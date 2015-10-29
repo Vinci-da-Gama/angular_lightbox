@@ -1,5 +1,5 @@
 (function () {
-	var ctrlM = angular.module('appname.ctrl');
+	var ctrlM = angular.module('ali.ctrl');
 
 	// ctrlM
 
