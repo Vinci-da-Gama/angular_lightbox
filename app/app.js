@@ -4,7 +4,7 @@
 	var routerCtrl = ['ali.router', 'ali.ctrl'];
 	var cons = ['ali.constant'];
 	var serv = ['ali.sig.service', 'ali.service'];
-	var dir = ['ali.dir', 'ali.cust.dir'];
+	var dir = ['ali.dir', 'ali.cust.dir', 'ali.dir.modal'];
 
 	var depedencyArr = angu.concat(routerCtrl, cons, serv, dir);
 	/**
@@ -21,5 +21,6 @@
 	angular.module('ali.ctrl', []);
 	angular.module('ali.dir', ['ali.service', 'ali.sig.service']);
 	angular.module('ali.cust.dir', ['ali.service', 'ali.sig.service']);
+	angular.module('ali.dir.modal', ['ali.service', 'ali.sig.service']);
 
 })();

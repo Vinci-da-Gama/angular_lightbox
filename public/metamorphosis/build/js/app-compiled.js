@@ -4,7 +4,7 @@
 	var routerCtrl = ['ali.router', 'ali.ctrl'];
 	var cons = ['ali.constant'];
 	var serv = ['ali.sig.service', 'ali.service'];
-	var dir = ['ali.dir', 'ali.cust.dir'];
+	var dir = ['ali.dir', 'ali.cust.dir', 'ali.dir.modal'];
 
 	var depedencyArr = angu.concat(routerCtrl, cons, serv, dir);
 	/**
@@ -21,6 +21,7 @@
 	angular.module('ali.ctrl', []);
 	angular.module('ali.dir', ['ali.service', 'ali.sig.service']);
 	angular.module('ali.cust.dir', ['ali.service', 'ali.sig.service']);
+	angular.module('ali.dir.modal', ['ali.service', 'ali.sig.service']);
 
 })();
 (function () {
@@ -31,12 +32,6 @@
 })();
 (function () {
 	var cosM = angular.module('ali.constant');
-
-})();
-(function () {
-	var ctrlM = angular.module('ali.ctrl');
-
-	// ctrlM
 
 })();
 (function () {
@@ -83,6 +78,58 @@
 	var dM = angular.module('ali.dir');
 
 	// dM
+
+})();
+(function () {
+	var shM = angular.module('ali.dir.modal');
+
+	shM.directive('sayhelloModal', ['$uibModal', function($uibModal){
+		return {
+			scope: {
+				'modalTitle': '@',
+				'modalText': '@',
+				'callbackfunction': '&'
+			}, // {} = isolate, true = child, false/undefined = no change
+			// controller: function($scope, $element, $attrs, $transclude) {},
+			// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+			restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+			// template: '',
+			// templateUrl: '',
+			// replace: true,
+			// transclude: true,
+			// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+			link: function($scope, iElm, iAttrs, ctrl) {
+				iElm.bind('click', function() {
+					var modalObj = {
+						scope: $scope,
+						templateUrl: './partials/sayhello-modal.html',
+						size: 'md'
+					};
+
+					$scope.modalInstance = $uibModal.open(modalObj);
+					$scope.titleHere = $scope.modalTitle;
+					$scope.contentHere = $scope.modalText;
+
+					$scope.modalInstance.result.then($scope.callbackfunction);
+
+				});
+
+				$scope.save = function () {
+					sayHi ();
+					$scope.modalInstance.close();
+				};
+
+				$scope.close = function () {
+					$scope.modalInstance.dismiss('cancel');
+				};
+
+				function sayHi () {
+					alert('Hello World...');
+					console.log('Hello World, this is modal...');
+				}
+			}
+		};
+	}]);
 
 })();
 // service js Document
@@ -155,6 +202,19 @@
 	var ssM = angular.module('ali.sig.service');
 
 	// ssM
+
+})();
+(function () {
+	var ctrlM = angular.module('ali.ctrl');
+
+	ctrlM.controller('EntireCtrl', ['$scope', function($scope){
+		$scope.titleModal = "Haha...May Day May Day...";
+		$scope.textModal = "Ermmm...Modal-text...";
+		$scope.sayHelloCurrentLevel = function (titleModalHere) {
+			alert("current level callback function ---- what is modal title--> "+titleModalHere);
+			console.log("current level callback function ---- what is modal title: --> "+titleModalHere);
+		};
+	}]);
 
 })();
 // jQuery Js Document
